@@ -13,6 +13,15 @@
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet.control.opacity@1.6.0/dist/L.Control.Opacity.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCN7VXKPP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YCN7VXKPP1');
+  </script>
   <link href="https://cdn.jsdelivr.net/npm/leaflet.control.opacity@1.6.0/dist/L.Control.Opacity.css" rel="stylesheet">
   <style type="text/css">
     body {
@@ -149,11 +158,12 @@
       "2019": layer2019,
       "2020": layer2020,
     }
-    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: true }).addTo(map);
     //OpacityControl
     L.control
       .opacity(overlayMaps, {
         label: 'Przezroczystość',
+        collapsed: true,
       })
       .addTo(map);
   </script>

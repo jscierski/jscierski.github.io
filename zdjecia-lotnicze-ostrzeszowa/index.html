@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Zdjęcia Lotnicze Ostrzeszowa</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.control.opacity@1.6.0/dist/L.Control.Opacity.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/leaflet.control.opacity@1.6.0/dist/L.Control.Opacity.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body,
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var tilesLocation = "https://dzieje-zdjecia-lotnicze.s3.eu-central-1.amazonaws.com/tiles/"
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 13,
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    });
+    var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
+      minZoom: 13,
+      maxZoom: 19,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+    });
+    var layer1942 = L.tileLayer(tilesLocation + '1942/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'National Archives'
+    });
+    var layer1961 = L.tileLayer(tilesLocation + '1961/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'PZGiK'
+    });
+    var layer1969 = L.tileLayer(tilesLocation + '1969/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'PZGiK'
+    });
+    var layer1978 = L.tileLayer(tilesLocation + '1978/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'PZGiK'
+    });
+    var layer1985 = L.tileLayer(tilesLocation + '1985/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'PZGiK'
+    });
+    var layer1995 = L.tileLayer(tilesLocation + '1995/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 19,
+      tms: false,
+      attribution: 'PZGiK'
+    });
+    var layer2004 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2004-01-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2010 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2010-08-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2013 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2013-09-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2016 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2016-08-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2019 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2019-05-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2020 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2020-05-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      maxZoom: 19,
+    });
+    var layer2021 = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime', {
+      layers: "Raster",
+      time: '2021-10-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      minZoom: 13,
+      maxZoom: 19,
+    });
+    var map = L.map('map', { layers: [osm, layer1942] }).setView([51.42469248732076, 17.918212102264903], 14.5);
+    var baseMaps = {
+      "OpenStreetMap": osm,
+      "Google Satelita": googleSat,
+      "Geoportal Ortofotomapa": layer2021,
+    };
+    var overlayMaps = {
+      "1942": layer1942,
+      "1961": layer1961,
+      "1969": layer1969,
+      "1978": layer1978,
+      "1985": layer1985,
+      "1995": layer1995,
+      "2004": layer2004,
+      "2010": layer2010,
+      "2013": layer2013,
+      "2016": layer2016,
+      "2019": layer2019,
+      "2020": layer2020,
+    }
+    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+    //OpacityControl
+    L.control
+      .opacity(overlayMaps, {
+        label: 'Przezroczystość',
+      })
+      .addTo(map);
+  </script>
+</body>
+
+</html>

@@ -138,6 +138,14 @@
       minZoom: 13,
       maxZoom: 19,
     });
+    var layerNMT = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/NMT/GRID1/WMS/ShadedRelief', {
+      layers: "Raster",
+      time: '2021-10-01T00:00:00Z',
+      crs: L.CRS.EPSG4326,
+      attribution: 'Geoportal.gov.pl',
+      minZoom: 13,
+      maxZoom: 19,
+    });
     var map = L.map('map', { layers: [osm, layer1942] }).setView([51.42469248732076, 17.918212102264903], 14.5);
     var baseMaps = {
       "OpenStreetMap": osm,
@@ -157,6 +165,7 @@
       "2016": layer2016,
       "2019": layer2019,
       "2020": layer2020,
+      "Numeryczny model terenu": layerNMT,
     }
     var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
     //OpacityControl

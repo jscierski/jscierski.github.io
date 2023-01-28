@@ -158,12 +158,11 @@
       "2019": layer2019,
       "2020": layer2020,
     }
-    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: true }).addTo(map);
+    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
     //OpacityControl
     L.control
       .opacity(overlayMaps, {
         label: 'Przezroczystość',
-        collapsed: true,
       })
       .addTo(map);
   </script>
